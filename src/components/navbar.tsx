@@ -94,22 +94,34 @@ const Navbar = () => {
       </button>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} flex space-x-4`}>
-      {/* <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} absolute top-full left-0 right-0 bg-background shadow-lg w-full`}> */}
+      <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} fixed inset-0 z-50 bg-background`}>
         <div className="noise" />
-        <div className="px-4 py-6 space-y-4 max-w-full">
-          {iconMap.map(({ id, icon: Icon, href, label, external }) => (
-            <Link
-              key={id}
-              href={href}
-              className="text-foreground hover:text-foreground transition-colors p-2 block"
-              aria-label={label}
-              onClick={closeMenu}
-              {...(external && { target: "_blank", rel: "noopener noreferrer" })}
-            >
-              <Icon className="size-6 transition-transform duration-150 ease-out hover:scale-150 origin-center" />
-            </Link>
-          ))}
+        
+        {/* Close Button - Upper Left */}
+        <button
+          onClick={closeMenu}
+          className="absolute top-4 left-4 p-2 text-foreground hover:bg-accent rounded-lg transition-colors z-10"
+          aria-label="Close menu"
+        >
+          <X size={24} />
+        </button>
+        
+        {/* Menu Items - Centered */}
+        <div className="flex items-center justify-center h-full">
+          <div className="space-y-8">
+            {iconMap.map(({ id, icon: Icon, href, label, external }) => (
+              <Link
+                key={id}
+                href={href}
+                className="text-foreground hover:text-foreground transition-colors p-4 block"
+                aria-label={label}
+                onClick={closeMenu}
+                {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+              >
+                <Icon className="size-6 transition-transform duration-150 ease-out hover:scale-150 origin-center" />
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </nav>
