@@ -1,6 +1,6 @@
 export default function ResumePage() {
   return (
-    <div className="fixed inset-0 w-full h-full">
+    <div className="fixed inset-0">
       <iframe
         src="Sathya_Sriram_Resume.pdf"
         width="100%"
